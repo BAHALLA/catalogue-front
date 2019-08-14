@@ -1,0 +1,33 @@
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+  <a class="navbar-brand" routerLink="/">Catalogue</a>
+
+  <ul class="navbar-nav mr-auto">
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/catalogue">Home</a>
+    </li>
+
+    <li class="nav-item dropdown" *ngIf="isAdmin">
+      <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+        Admin
+      </a>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" >Products</a>
+        <a class="dropdown-item" >Categories</a>
+        <a class="dropdown-item" >Users</a>
+      </div>
+    </li>
+  </ul>
+  <ul class="navbar-nav ml-auto" *ngIf="isLogged == false">
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/login">Sign In</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/register">Sign Up</a>
+    </li>
+  </ul>
+  <ul class="navbar-nav ml-auto" *ngIf="isLogged">
+    <li class="nav-item">
+      <a class="nav-link" (click)="onLogout()">Logout</a>
+    </li>
+  </ul>
+</nav>
