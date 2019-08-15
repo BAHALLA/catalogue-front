@@ -7,16 +7,19 @@ import { AdminCategoryComponent } from './admin-category/admin-category.componen
 import { AdminUsersComponent } from './admin-users/admin-users.component';
 import {CategoryService} from "./admin-services/category-service.service";
 import {UserService} from "./admin-services/user-service.service";
+import { NewCategoryComponent } from './new-category/new-category.component';
+import {FormsModule} from "@angular/forms";
 
 
 
 
 @NgModule({
-  declarations: [AdminComponent, AdminCategoryComponent, AdminUsersComponent],
+  declarations: [AdminComponent, AdminCategoryComponent, AdminUsersComponent, NewCategoryComponent],
   imports: [
     CommonModule,
     routing,
-    RouterModule
+    RouterModule,
+    FormsModule
   ],
   providers: []
 })

@@ -1,26 +1,34 @@
 <div class="container top-spacer">
- <table class="table" *ngIf="categories">
-   <thead class="bg-primary cl-white">
-      <th>#</th>
-      <th>Name</th>
-      <th>Actions</th>
-   </thead>
-   <tr *ngFor="let c of categories['_embedded'].categories; index as i">
-     <td>{{i}}</td>
-     <td>{{c.name}}</td>
-     <td>
-       <div class="dropdown">
-         <button class="btn btn-outline-primary dropdown-toggle" type="button" id="dropdownMenuButton"
-                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-           Actions
-         </button>
-         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-           <a class="dropdown-item">Add Category</a>
-           <a class="dropdown-item">Delete Category</a>
-           <a class="dropdown-item">Edit Category</a>
-         </div>
-       </div>
-     </td>
-   </tr>
- </table>
+    <div class="card">
+        <div class="card-header bg-dark cl-white">
+            List Of Categories
+          <button class="btn btn-primary float-right" (click)="onNewCategory()">New Category</button>
+        </div>
+        <div class="card-body">
+          <table class="table" *ngIf="categories">
+            <thead class="bg-primary cl-white">
+                <th>#</th>
+                <th>Name</th>
+                <th>Actions</th>
+            </thead>
+            <tr *ngFor="let c of categories['_embedded'].categories; index as i">
+              <td>{{i + 1}}</td>
+              <td>{{c.name}}</td>
+              <td>
+                <div class="dropdown">
+                  <button class="btn btn-outline-primary dropdown-toggle" type="button" id="dropdownMenuButton"
+                          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Actions
+                  </button>
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" (click)="onDeleteCategory(c)">Delete Category</a>
+                    <a class="dropdown-item" (click)="onEditCategory(c)">Edit Category</a>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </table>
+      </div>
+     </div>
+
 </div>

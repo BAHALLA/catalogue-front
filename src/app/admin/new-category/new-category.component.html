@@ -1,0 +1,17 @@
+<div class="container top-spacer">
+  <div class="card">
+    <div class="card-header">
+      New Category
+    </div>
+    <div class="card-body">
+      <form #f="ngForm" (ngSubmit)="onSaveCategory(f.value)">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" ngModel name="name" id="name" class="form-control">
+        </div>
+        <button class="btn btn-primary" type="submit"> save</button>
+      </form>
+    </div>
+  </div>
+
+</div>

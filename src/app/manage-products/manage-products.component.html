@@ -1,30 +1,36 @@
 <div class="container top-spacer">
-  <table class="table" *ngIf="products">
-    <thead class="bg-primary cl-white">
-    <th>#</th>
-    <th>Name</th>
-    <th>Price</th>
-    <th>Actions</th>
-    </thead>
-    <tr *ngFor="let c of products['_embedded'].products; index as i">
-      <td>{{i}}</td>
-      <td>{{c.name}}</td>
-      <td>{{c.price}}</td>
-      <td>
-        <div class="dropdown">
-          <button class="btn btn-outline-primary dropdown-toggle" type="button" id="dropdownMenuButton"
-                  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Actions
-          </button>
-          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <a class="dropdown-item">Add Product
-              <span class="g"></span>
-            </a>
-            <a class="dropdown-item">Delete Product</a>
-            <a class="dropdown-item">Edit Product</a>
-          </div>
-        </div>
-      </td>
-    </tr>
-  </table>
+  <div class="card">
+    <div class="card-header bg-dark cl-white">
+        List Of Products
+      <button class="btn btn-primary float-right">New Product</button>
+    </div>
+    <div class="card-body">
+        <table class="table" *ngIf="products">
+            <thead class="bg-primary cl-white">
+            <th>#</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Actions</th>
+            </thead>
+            <tr *ngFor="let c of products['_embedded'].products; index as i">
+              <td>{{i+ 1}}</td>
+              <td>{{c.name}}</td>
+              <td>{{c.price}}</td>
+              <td>
+                <div class="dropdown">
+                  <button class="btn btn-outline-primary dropdown-toggle" type="button" id="dropdownMenuButton"
+                          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Actions
+                  </button>
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item">Delete Product <span class=""></span></a>
+                    <a class="dropdown-item">Edit Product</a>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </table>
+    </div>
+  </div>
+
 </div>

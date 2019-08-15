@@ -15,10 +15,6 @@ export class CategoryComponent implements OnInit {
   constructor(private catService: CatalogueService, private router: Router) { }
 
   ngOnInit() {
-    this.catService.getCategoryById("C1").subscribe( data => {
-      this.currentCategory = data;
-      this.getAllProductsOfCategory(this.currentCategory);
-    });
     this.catService.getAllCategories().subscribe( data => {
       this.categories = data;
     }, error => {

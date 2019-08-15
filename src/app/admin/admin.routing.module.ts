@@ -2,6 +2,7 @@ import {RouterModule, Routes} from "@angular/router";
 import {AdminComponent} from "./admin/admin.component";
 import {AdminCategoryComponent} from "./admin-category/admin-category.component";
 import {AdminUsersComponent} from "./admin-users/admin-users.component";
+import {NewCategoryComponent} from "./new-category/new-category.component";
 
 
 const routes: Routes = [
@@ -15,6 +16,7 @@ const routes: Routes = [
         children: [
           { path: '', redirectTo: 'listCategories', pathMatch: 'full'},
           { path: 'listCategories', component: AdminCategoryComponent, data: { title: 'Categories'}},
+          { path: 'new-category', component: NewCategoryComponent, data: { title: 'New Category'}}
         ]
       },
       {
