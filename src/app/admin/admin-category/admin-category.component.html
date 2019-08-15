@@ -1,0 +1,26 @@
+<div class="container top-spacer">
+ <table class="table" *ngIf="categories">
+   <thead class="bg-primary cl-white">
+      <th>#</th>
+      <th>Name</th>
+      <th>Actions</th>
+   </thead>
+   <tr *ngFor="let c of categories['_embedded'].categories; index as i">
+     <td>{{i}}</td>
+     <td>{{c.name}}</td>
+     <td>
+       <div class="dropdown">
+         <button class="btn btn-outline-primary dropdown-toggle" type="button" id="dropdownMenuButton"
+                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+           Actions
+         </button>
+         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+           <a class="dropdown-item">Add Category</a>
+           <a class="dropdown-item">Delete Category</a>
+           <a class="dropdown-item">Edit Category</a>
+         </div>
+       </div>
+     </td>
+   </tr>
+ </table>
+</div>

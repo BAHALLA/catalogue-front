@@ -19,7 +19,7 @@ export class AuthGardService implements CanActivate{
         if(route.data.role &&  currentUser.role.indexOf(route.data.role) !== -1){
           return true;
         }
-        this.router.navigate(['/']);
+        this.router.navigate(['/products']);
         return false;
     }
     this.router.navigate(['/login']);

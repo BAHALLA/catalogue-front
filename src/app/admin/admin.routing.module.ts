@@ -1,5 +1,7 @@
 import {RouterModule, Routes} from "@angular/router";
 import {AdminComponent} from "./admin/admin.component";
+import {AdminCategoryComponent} from "./admin-category/admin-category.component";
+import {AdminUsersComponent} from "./admin-users/admin-users.component";
 
 
 const routes: Routes = [
@@ -7,9 +9,22 @@ const routes: Routes = [
     path: '',
     component: AdminComponent,
     children: [
-      { path: '', redirectTo: '', pathMatch: 'full'}
+      {path: '', redirectTo: 'categories'},
+      {
+        path: 'categories',
+        children: [
+          { path: '', redirectTo: 'listCategories', pathMatch: 'full'},
+          { path: 'listCategories', component: AdminCategoryComponent, data: { title: 'Categories'}},
+        ]
+      },
+      {
+        path: 'users',
+          children: [
+            { path: '', redirectTo: 'usersList', pathMatch: 'full'},
+            { path: 'usersList', component: AdminUsersComponent, data: {title: 'Users'} }
+          ]
+      }
     ]
   }
 ];
-
 export const routing = RouterModule.forChild(routes);

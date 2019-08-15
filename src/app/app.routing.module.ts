@@ -4,10 +4,12 @@ import {LoginComponent} from "./login/login.component";
 import {RegisterComponent} from "./register/register.component";
 import {AuthGardService} from "./services/auth-gard.service";
 import {Role} from "./models/role";
+import {ManageProductsComponent} from "./manage-products/manage-products.component";
 
 const routes: Routes = [
   { path: '', redirectTo: 'catalogue', pathMatch: 'full'},
   { path: 'catalogue', loadChildren: () => import('../app/catalogue/catalogue.module').then(m => m.CatalogueModule) },
+  { path: 'products', component: ManageProductsComponent, data: {title: 'Products'}},
   { path: 'login', component: LoginComponent, data: {title: 'Sign In'} },
   { path: 'register', component: RegisterComponent , data: {title: 'Sign Up'}},
   { path: 'admin', canActivate : [AuthGardService], data: {role:Role.ADMIN}, loadChildren: () => import('../app/admin/admin.module').then(m => m.AdminModule) },

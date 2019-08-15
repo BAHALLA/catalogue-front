@@ -25,7 +25,7 @@ export class ProductComponent implements OnInit {
   }
 
   getProducts(url) {
-    this.catService.getProducts(url).subscribe( data => {
+    this.catService.getProductsByCategory(url).subscribe( data => {
       this.products = data;
     },
       error => {

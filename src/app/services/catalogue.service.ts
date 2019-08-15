@@ -15,7 +15,14 @@ export class CatalogueService {
     return this.httClient.get<Category[]>(this.baseUrl + "/categories");
   }
 
-  getProducts (url : string) {
+  getProductsByCategory (url : string) {
     return this.httClient.get<Product[]>(url);
   }
+  getCategoryById(id: string) {
+    return this.httClient.get(this.baseUrl + "/categories/"+ id);
+  }
+  getAllProducts() {
+      return this.httClient.get(this.baseUrl + "/products");
+  }
+
 }

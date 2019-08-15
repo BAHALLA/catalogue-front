@@ -10,11 +10,15 @@ import {Router} from "@angular/router";
   styleUrls: ['./category.component.css']
 })
 export class CategoryComponent implements OnInit {
-  categories: Category[];
+  categories: any;
   currentCategory: any;
   constructor(private catService: CatalogueService, private router: Router) { }
 
   ngOnInit() {
+    this.catService.getCategoryById("C1").subscribe( data => {
+      this.currentCategory = data;
+      this.getAllProductsOfCategory(this.currentCategory);
+    });
     this.catService.getAllCategories().subscribe( data => {
       this.categories = data;
     }, error => {

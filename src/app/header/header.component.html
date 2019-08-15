@@ -6,14 +6,14 @@
       <a class="nav-link" routerLink="/catalogue">Home</a>
     </li>
 
-    <li class="nav-item dropdown" *ngIf="isAdmin">
-      <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-        Admin
+    <li class="nav-item dropdown" *ngIf="isLogged">
+      <a class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">
+        Administration
       </a>
       <div class="dropdown-menu">
-        <a class="dropdown-item" >Products</a>
-        <a class="dropdown-item" >Categories</a>
-        <a class="dropdown-item" >Users</a>
+        <a class="dropdown-item" routerLink="/products">Products</a>
+        <a *ngIf="isAdmin" class="dropdown-item" routerLink="/admin/categories">Categories</a>
+        <a *ngIf="isAdmin" class="dropdown-item" routerLink="/admin/users">Users</a>
       </div>
     </li>
   </ul>
@@ -27,7 +27,7 @@
   </ul>
   <ul class="navbar-nav ml-auto" *ngIf="isLogged">
     <li class="nav-item">
-      <a class="nav-link" (click)="onLogout()">Logout</a>
+      <a class="nav-link cur-pointer" (click)="onLogout()">Logout</a>
     </li>
   </ul>
 </nav>
