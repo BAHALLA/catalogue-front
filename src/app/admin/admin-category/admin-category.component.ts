@@ -31,16 +31,16 @@ export class AdminCategoryComponent implements OnInit {
     if(!cn) return;
     this.categoryService.deleteCategory(c._links.self.href).subscribe(
       data => {
-        console.log(data);
+        this.onGetCategories();
       }, error => {
         console.log(error);
       }
     );
-    this.onGetCategories();
+
   }
 
   onEditCategory(c: any) {
-
+    this.router.navigateByUrl("/admin/update-category/"+ btoa(c._links.self.href));
   }
 
   onNewCategory() {

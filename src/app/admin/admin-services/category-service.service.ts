@@ -9,6 +9,7 @@ import {AuthService} from "../../services/auth.service";
 export class CategoryService {
 
   private readonly baseUrl = "http://localhost:9090";
+  private header: HttpHeaders;
 
   constructor(private httpClient: HttpClient, private authService: AuthService) {
 
@@ -17,19 +18,25 @@ export class CategoryService {
   getAllCategories() {
     return this.httpClient.get(this.baseUrl + "/categories");
   }
-  getCategoryById(id: string) {
-    return this.httpClient.get(this.baseUrl + "/categories/"+ id);
+  getCategoryById(url) {
+    return this.httpClient.get(url);
   }
   addCategory(data) {
-
+    this.loadToken();
+    return this.httpClient.post(this.baseUrl +"/categories", data, {headers: this.header});
   }
-  updateCategory(id) {
-
+  updateCategory(url , data) {
+    this.loadToken();
+    return this.httpClient.put(url, data, {headers: this.header});
   }
+
   deleteCategory(url) {
+     this.loadToken();
+      return this.httpClient.delete(url, {headers: this.header})
+  }
 
-      const token = this.authService.getCurrentUser.token;
-      const header = new HttpHeaders( {'Authorization': token });
-      return this.httpClient.delete(url, {headers: header})
+  loadToken() {
+    const token = this.authService.getCurrentUser.token;
+    this.header = new HttpHeaders( {'Authorization': token });
   }
 }

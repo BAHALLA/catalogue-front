@@ -1,6 +1,7 @@
-<div class="container top-spacer">
-  <div class="card">
-    <div class="card-header">
+<div class="container col-md-6 top-spacer">
+  <a routerLink="/admin">Go back To list categories</a>
+  <div class="card top-spacer">
+    <div class="card-header bg-primary cl-white">
       New Category
     </div>
     <div class="card-body">
@@ -13,5 +14,5 @@
       </form>
     </div>
   </div>
-
+  <p class="alert alert-danger" *ngIf="error">{{error}}</p>
 </div>

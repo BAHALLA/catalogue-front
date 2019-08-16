@@ -12,7 +12,7 @@ import {first} from "rxjs/operators";
 export class LoginComponent implements OnInit {
 
   isLoading: boolean = false;
-  error: undefined;
+  error: any;
   returnUrl: string;
 
   constructor(private authService: AuthService, private route: ActivatedRoute, private router: Router) {
@@ -29,8 +29,8 @@ export class LoginComponent implements OnInit {
         this.router.navigate(['/admin']);
      },
        error1 => {
-       console.log(error1);
-        this.error = error1;
+
+        this.error = 'Invalid Credentials';
          this.isLoading = false;
        }
    );

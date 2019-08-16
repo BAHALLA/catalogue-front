@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {CategoryService} from "../admin-services/category-service.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-new-category',
@@ -7,12 +9,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NewCategoryComponent implements OnInit {
 
-  constructor() { }
+  private error: string;
+  constructor(private catService: CategoryService, private router: Router) { }
 
   ngOnInit() {
   }
 
   onSaveCategory(value: any) {
-    
+
+    this.catService.addCategory(value).subscribe(
+      data => {
+        this.router.navigate(['/admin']);
+      },
+      error => {
+        this.error = error;
+      }
+    );
   }
 }

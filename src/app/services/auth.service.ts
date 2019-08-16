@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {BehaviorSubject} from "rxjs";
 import User from "../models/user";
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {map} from "rxjs/operators";
 import user from "../models/user";
 import {JwtHelperService} from "@auth0/angular-jwt";
@@ -43,5 +43,10 @@ export class AuthService {
   logout() {
     localStorage.removeItem('currentUser');
     this.currentUserSubject.next(null);
+  }
+
+  signUpUser(username: string, password: string , confirmedPassword: string ) {
+    return this.httpClient.post(this.baseUrl + "/register",
+      {username, password, confirmedPassword});
   }
 }

@@ -9,12 +9,13 @@ import {CategoryService} from "./admin-services/category-service.service";
 import {UserService} from "./admin-services/user-service.service";
 import { NewCategoryComponent } from './new-category/new-category.component';
 import {FormsModule} from "@angular/forms";
+import { UpdateCategoryComponent } from './update-category/update-category.component';
 
 
 
 
 @NgModule({
-  declarations: [AdminComponent, AdminCategoryComponent, AdminUsersComponent, NewCategoryComponent],
+  declarations: [AdminComponent, AdminCategoryComponent, AdminUsersComponent, NewCategoryComponent, UpdateCategoryComponent],
   imports: [
     CommonModule,
     routing,

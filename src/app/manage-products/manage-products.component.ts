@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {CatalogueService} from "../services/catalogue.service";
+import {ProductsService} from "../services/products.service";
 
 @Component({
   selector: 'app-manage-products',
@@ -9,17 +9,44 @@ import {CatalogueService} from "../services/catalogue.service";
 export class ManageProductsComponent implements OnInit {
 
   products : any;
-  constructor(private catService : CatalogueService) { }
+  currentPage: number;
+  totalElements: number;
+  nextPageUrl: string;
+  totalPages: number;
+  private size: number;
+  arrayPages: any;
+  constructor(private prodService: ProductsService) { }
 
   ngOnInit() {
-    this.catService.getAllProducts().subscribe(
+    this.prodService.getAllProducts().subscribe( data => {
+         this.totalElements = data['_embedded'].products.length;
+          this.loadProducts();
+    },
+      error => {
+        console.log(error);
+      });
+
+  }
+
+  loadProducts(size : number=5, page: number=0) {
+    this.prodService.getProducts(size, page).subscribe(
       data => {
         this.products = data;
+        this.initParams(data);
       },
       error => {
         console.log(error);
       }
-    )
+    );
+  }
+  initParams (data) {
+    this.currentPage = this.prodService.currentPage;
+    this.size = this.prodService.currentSize;
+    this.totalPages = this.totalElements / this.size;
+    this.arrayPages = new Array(this.totalPages);
   }
 
+  onNewPage(j: number) {
+    this.loadProducts(5, j);
+  }
 }

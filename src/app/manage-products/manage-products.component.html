@@ -31,6 +31,12 @@
             </tr>
           </table>
     </div>
+      <ul class="pagination d-flex justify-content-center">
+        <li class="page-item d-inline-flex" [ngClass]="currentPage === j?'active' :''"
+            *ngFor="let i of arrayPages; index as j" (click)="onNewPage(j)">
+          <a class="page-link cur-pointer">{{j}}</a>
+        </li>
+      </ul>
   </div>
 
 </div>

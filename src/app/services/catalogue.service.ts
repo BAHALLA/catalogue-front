@@ -21,8 +21,6 @@ export class CatalogueService {
   getCategoryById(id: string) {
     return this.httClient.get(this.baseUrl + "/categories/"+ id);
   }
-  getAllProducts() {
-      return this.httClient.get(this.baseUrl + "/products");
-  }
+
 
 }
